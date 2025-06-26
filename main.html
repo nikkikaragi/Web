@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>N — My Blog</title>
+
+<!-- =======  BASIC STYLING  ======= -->
+<style>
+    /* --- Page background --- */
+    body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        background: url("beige.png") repeat;   /* subtle beige texture */
+    }
+
+.header {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* full-width polka banner image */
+.header-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* centered circular logo */
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: url("N.png") center/contain no-repeat;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+}
+
+
+    /* --- Main content area --- */
+    .posts {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 24px 80px;
+    }
+
+    /* --- Individual post cards --- */
+    .post {
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        padding: 24px;
+        margin-bottom: 36px;
+        cursor: pointer;
+        overflow: hidden;
+
+        /* collapsed state */
+        max-height: 160px;                     /* show first ~7 lines   */
+        transition: max-height .5s ease;
+        position: relative;
+    }
+
+    /* subtle fade-out at bottom of collapsed cards */
+    .post::after {
+        content: "";
+        position: absolute;
+        left: 0; right: 0; bottom: 0;
+        height: 60px;
+        background: linear-gradient(
+            rgba(255,255,255,0) 0%,
+            #ffffff 100%);
+        pointer-events: none;
+        transition: opacity .4s ease;
+    }
+
+    /* expanded state */
+    .post.expanded {
+        max-height: 2000px;                    /* effectively “auto”    */
+    }
+    .post.expanded::after {
+        opacity: 0;                            /* remove fade overlay   */
+    }
+</style>
+</head>
+<body>
+
+    <!-- =======  HEADER  ======= -->
+    <!-- <header class="header">
+        <div class="logo" aria-label="Site logo with letter N"></div>
+    </header> -->
+    <header class="header">
+    <img src="banner.png" alt=" banner" class="header-img" />
+    <div class="logo"></div>
+    </header>
+
+
+    <!-- =======  BLOG FEED  ======= -->
+    <main class="posts">
+
+        <!-- Post 1 (sample) -->
+        <article class="post">
+            <h2>First Post Title</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
+                odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla
+                quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent
+                mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum
+                lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent
+                per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in
+                libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh.
+                Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis
+                tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus
+                risus, iaculis vel, suscipit quis, luctus non, massa.
+            </p>
+        </article>
+
+        <!-- Post 2 (sample) -->
+        <article class="post">
+            <h2>Another Post Title</h2>
+            <p>
+                Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+                Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
+                lacinia odio sem nec elit. Cras mattis consectetur purus sit amet
+                fermentum. Etiam porta sem malesuada magna mollis euismod. Donec sed
+                odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+            </p>
+            <p>
+                Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis
+                interdum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+            </p>
+        </article>
+
+        <!-- Add more <article class="post">…</article> blocks as needed -->
+    </main>
+
+
+<!-- =======  FADE-/EXPAND TOGGLE  ======= -->
+<script>
+document.querySelectorAll('.post').forEach(post => {
+    post.addEventListener('click', () => {
+        post.classList.toggle('expanded');
+    });
+});
+</script>
+
+</body>
+</html>

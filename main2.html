@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Responsive Banner Demo</title>
+
+<style>
+/* ===  Page background  === */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    /* beige wallpaper for the whole page */
+    background: url("beige.png") repeat;
+    font-family: system-ui, sans-serif;
+}
+
+/* ===  Top banner  === */
+.banner {
+    width: 100%;
+    /* one instance of the image stretched across */
+    background: url("banner.png") center / cover no-repeat;
+
+    /*
+       Responsive height:
+       – never shorter than 140 px (small phones)
+       – grows with viewport width (≈28 vw)
+       – never taller than 320 px (very wide desktops)
+     */
+    height: clamp(100px, 28vw, 200px);
+    
+    /* optional: shadow that separates banner from the rest */
+    box-shadow: 0 4px 6px rgba(0,0,0,.08);
+}
+
+/* ===  Placeholder content area  === */
+main {
+    max-width: 960px;
+    margin: 40px auto;
+    padding: 0 24px 80px;
+}
+</style>
+</head>
+<body>
+
+    <!--  Banner strip -->
+    <header class="banner"></header>
+
+    <!--  Page content -->
+    <main>
+        <h1>Hello, world!</h1>
+        <p>Add your blog posts or other content here.</p>
+    </main>
+
+</body>
+</html>
